@@ -1,0 +1,62 @@
+# Fichiers spécifiques à IntelliJ IDEA
+/.idea/
+/*.iws
+/*.iml
+/*.ipr
+
+# Exclure les logs et fichiers temporaires
+/logs
+*.log
+/tmp
+/out
+/target
+/build
+
+# Exclure les fichiers de configuration des run/debug
+.idea/runConfigurations/
+
+# Fichiers de configuration utilisateur
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/libraries/
+
+# Exclure les configurations spécifiques au système
+/.DS_Store
+/.vscode/
+/*.swp
+*~.nib
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+/.mvn/
+/target/
+
+# Gradle
+/.gradle/
+/build/
+
+# Logs
+*.log
+
+# OS spécifiques
+# Windows
+Thumbs.db
+*.cab
+*.msi
+*.dll
+*.exe
+*.com
+*.bat
+*.sh
+*.log
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
