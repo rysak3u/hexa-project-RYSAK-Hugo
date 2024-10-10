@@ -11,56 +11,63 @@ public class TestProposition {
     @Test
     @DisplayName("une lettre est incorrecte")
     public void casLettreIncorrecte() {
-        var mot = new MotSecret("S");
-        var reponse = mot.compareProposition("Z");
+        var mot = "S";
+        var reponse = new Reponse(mot);
+        reponse.compare("Z");
         assertResultat(reponse, INCORRECTE);
     }
 
     @Test
     @DisplayName("une lettre est placée")
     public void casLettrePlacee() {
-        var mot = new MotSecret("S");
-        var reponse = mot.compareProposition("S");
+        var mot = "S";
+        var reponse = new Reponse(mot);
+        reponse.compare("S");
         assertResultat(reponse, PLACEE);
     }
 
     @Test
     @DisplayName("une lettre est incorrecte, une non placée")
     public void casDeuxiemeLettreMalPlacee() {
-        var mot = new MotSecret("SO");
-        var reponse = mot.compareProposition("ZS");
+        var mot = "SO";
+        var reponse = new Reponse(mot);
+        reponse.compare("ZS");
         assertResultat(reponse,  INCORRECTE, NON_PLACEE);
     }
 
     @Test
     @DisplayName("une lettre est incorrecte, non placée, placée")
     public void casCombinaisons() {
-        var mot = new MotSecret("SOL");
-        var reponse = mot.compareProposition("ZSL");
+        var mot = "SOL";
+        var reponse = new Reponse(mot);
+        reponse.compare("ZSL");
         assertResultat(reponse,  INCORRECTE, NON_PLACEE, PLACEE);
     }
 
     @Test
     @DisplayName("toutes les lettres sont placées")
     void casToutesLettresPlacees() {
-        var mot = new MotSecret("SOLID");
-        var reponse = mot.compareProposition("SOLID");
+        var mot = "SOLID";
+        var reponse = new Reponse(mot);
+        reponse.compare("SOLID");
         assertThat(reponse.lettresToutesPlacees()).isTrue();
     }
 
     @Test
     @DisplayName("la proposition n'est pas correcte")
     void casLettresIncorrectes() {
-        var mot = new MotSecret("SOLID");
-        var reponse = mot.compareProposition("SOL*D");
+        var mot = "SOLID";
+        var reponse = new Reponse(mot);
+        reponse.compare("SOL*D");
         assertThat(reponse.lettresToutesPlacees()).isFalse();
     }
 
     @Test
     @DisplayName("vérifie la taille du résultat")
     void casAccesLettres() {
-        var mot = new MotSecret("SOLID");
-        var reponse = mot.compareProposition("SOL*D");
+        var mot = "SOLID";
+        var reponse = new Reponse(mot);
+        reponse.compare("SOL*D");
         assertThat(reponse.lettresResultat()).hasSize(5);
     }
 

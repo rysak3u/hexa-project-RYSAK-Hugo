@@ -24,15 +24,16 @@ public class Mastermind {
     // sinon on utilise le service de tirage aléatoire pour obtenir un mot
     // et on initialise une nouvelle partie et on la stocke
     public boolean nouvellePartie(Joueur joueur) {
-        var partie = partieRepository.getPartieEnregistree(joueur);
-        if(partie.isPresent()){
-            return false;
-        }
-        var mot = serviceTirageMot.tirageMotAleatoire();
-        Partie p = new Partie(joueur,mot,0,false);
-        partieRepository.create(p);
-        return true;
+        return partieRepository.getPartieEnregistree(joueur)
+                .map(partie -> false)
+                .orElseGet(() -> {
+                    var mot = serviceTirageMot.tirageMotAleatoire();
+                    Partie p = new Partie(joueur, mot, 0, false);
+                    partieRepository.create(p);
+                    return true;
+                });
     }
+
 
     // on récupère éventuellement la partie enregistrée pour le joueur
     // si la partie n'est pas une partie en cours, on renvoie une erreur
@@ -60,8 +61,6 @@ public class Mastermind {
     // si la partie en cours est vide, on renvoie false
     // sinon, on évalue si la partie est terminée
     private boolean isJeuEnCours(Optional<Partie> partieEnCours) {
-        if(partieEnCours.isPresent() && !partieEnCours.get().isTerminee())
-            return true;
-        return false;
+        return partieEnCours.isPresent() && !partieEnCours.get().isTerminee();
     }
 }
