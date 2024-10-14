@@ -40,29 +40,23 @@ public class Partie {
         return motADeviner;
     }
 
-    // si le nombre max d'essais n'est pas atteint
+    // si le nombre max d'essais n'est pas atteint,
     // on compare la proposition au mot secret
     // et on renvoie la réponse
     // si toutes les lettres sont correctement placées,
     // on a terminé la partie
     public Reponse tourDeJeu(String motPropose) {
-        nbEssais++;
-        verifieNbEssais();
+        partieTerminee = this.getNbEssais()>=NB_ESSAIS_MAX;
         var response = new Reponse(motADeviner);
         if(!this.partieTerminee){
             response.compare(motPropose);
-            if(response.lettresToutesPlacees()){
+            nbEssais++;
+            if(response.lettresToutesPlacees() || this.getNbEssais()>=NB_ESSAIS_MAX){
                 partieTerminee = true;
             }
         }
-        return response;
-    }
 
-    // vérifie que le nombre d'essais max n'est pas atteint
-    private void verifieNbEssais() {
-        if(this.getNbEssais()>=NB_ESSAIS_MAX){
-            partieTerminee = true;
-        }
+        return response;
     }
 
     // la partie est-elle terminée
@@ -70,8 +64,4 @@ public class Partie {
         return partieTerminee;
     }
 
-    // la partie est terminée
-    void done() {
-        partieTerminee = true;
-    }
 }

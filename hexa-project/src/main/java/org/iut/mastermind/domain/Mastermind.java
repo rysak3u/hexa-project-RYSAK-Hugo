@@ -44,7 +44,7 @@ public class Mastermind {
 
             return calculeResultat(partie.get(),motPropose);
         }
-        return new ResultatPartie(null,true,true);
+        return ResultatPartie.ERROR;
     }
 
     // on évalue le résultat du mot proposé pour le tour de jeu
