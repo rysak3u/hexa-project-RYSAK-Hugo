@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Test nouvelle partie:" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-10-14T09:09:40" hostname="ORDI-HUGO" time="1.045">
+  <properties/>
+  <testcase name="ne peut pas redÃ©marrer" classname="org.iut.mastermind.domain.partie.TestNouvellePartie" time="1.022"/>
+  <testcase name="est correctement initialisÃ©e" classname="org.iut.mastermind.domain.partie.TestNouvellePartie" time="0.021"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

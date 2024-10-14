@@ -1,17 +1,8 @@
 package org.iut.mastermind.domain.partie;
 
-import java.util.HashMap;
+public record Joueur(String nom) {
 
-public class Joueur {
 
-    private final String nom;
-
-    // constructeur
-    public Joueur(String nom) {
-        this.nom = nom;
-    }
-
-    // getter nom joueur
     public String getNom() {
         return nom;
     }
@@ -19,12 +10,11 @@ public class Joueur {
     // equals
     @Override
     public boolean equals(Object o) {
+        if(getClass() != o.getClass()){
+            return false;
+        }
         Joueur j = (Joueur) o;
-       return this.nom.equals(j.getNom());
+        return this.nom.equals(j.nom());
     }
 
-    @Override
-    public int hashCode() {
-        return nom.hashCode();
-    }
 }
